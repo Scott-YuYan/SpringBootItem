@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>成绩排行榜</title>
+</head>
+<body>
+<table id="rank-table">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>成绩</th>
+        <th>姓名</th>
+        <th>学号</th>
+    </tr>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+          if( xhr.readyState == 4){
+             if( xhr.status >= 200 && xhr.status < 300 || xhr.status == 304){
+             var json = xhr.responseText;
+             var list = JSON.parse(json);
+             var str1 = '';
+             var step;
+             for (step = 0; step < 5; step++) {
+                str1 += '<tr><td>'+(step+1)+'</td><td>'+list[step].score+'</td><td>'+list[step].user.name+'</td><td>'+list[step].user.id+'</td></tr> '
+             }
+
+             var str = '<tr><th>序号</th><th>成绩</th><th>姓名</th><th>学号</th>'+str1+
+             '<tr><td>6</td><td>'+list[5].score+'</td><td>'+list[5].user.name+'</td><td>'+list[5].user.id+'</td></tr>'
+
+          document.getElementById('rank-table').innerHTML = str;
+          }
+       }
+    };
+        xhr.open("get", "/getRankItem", true);
+        xhr.send(null);
+
+    </script>
+    </thead>
+    <tbody>
+
+
+    </tbody>
+</table>
+</body>
+</html>
