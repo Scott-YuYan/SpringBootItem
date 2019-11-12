@@ -19,4 +19,6 @@ public class ScoreItem {
     public void setScore(Integer score) {
         this.score = score;
     }
+
+
 }
