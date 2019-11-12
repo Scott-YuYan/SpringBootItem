@@ -16,7 +16,6 @@ public class HelloController {
     @RequestMapping("/getUser")
     @ResponseBody
     public void getUserFromDatabase() {
-
     }
 
     @RequestMapping("/search")
