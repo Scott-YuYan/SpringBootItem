@@ -1,5 +1,8 @@
 package hello.entity;
-public class ScoreItem {
+
+import java.io.Serializable;
+
+public class ScoreItem implements Serializable {
     private Integer score;
     private User user;
 

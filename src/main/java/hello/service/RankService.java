@@ -1,5 +1,6 @@
 package hello.service;
 
+import hello.anno.Cache;
 import hello.dao.RankDao;
 import hello.entity.ScoreItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,9 @@ import java.util.List;
 @Service
 public class RankService {
     @Autowired
-    private RankDao rankDao;
+    RankDao rankDao;
 
+    @Cache
     public List<ScoreItem> sort() {
         return rankDao.getRankItem();
     }
